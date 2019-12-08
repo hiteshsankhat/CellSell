@@ -20,8 +20,3 @@ class Variant(models.Model):
 
     def __str__(self):
         return self.veriantName
-
-class PhoneData(models.Model):
-    brandName = models.CharField(max_length=500)
-    modelName = models.CharField(max_length=500)
-    variantname = models.CharField(max_length=500)

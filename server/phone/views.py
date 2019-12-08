@@ -1,22 +1,18 @@
 from django.http import HttpResponse
-from django.shortcuts import get_object_or_404
-from rest_framework.views import APIView
-from rest_framework.response import Response
-from rest_framework import status
+from django.shortcuts import get_object_or_404, render
+# from rest_framework.views import APIView
+# from rest_framework.response import Response
+# from rest_framework import status
 
 from . import serializers
 from . import models
+from server import settings
 
-class PhoneData(APIView):
-    def get(self, request):
-        variantsDb = models.Variant.objects.all()
-        data = []
-        for i in variantsDb:
-            variantName = i.veriantName
-            modelName = i.modelNumberId.modelName
-            brandname = i.modelNumberId.brandID.name
-            abc = models.PhoneData(brandName=brandname, variantname=variantName, modelName=modelName)
-            data.append(serializers.PhoneSerialiezer(abc).data)
+content = settings.APPSETTINGS_DATA
 
-        return Response(data=data, status=200)
-        
+def index(request):
+    variantsDb = models.Variant.objects.all().order_by('modelNumberId')
+    content['data'] = variantsDb
+
+    print(dir(variantsDb[0].modelNumberId))
+    return render(request, 'phone/index.html', content)

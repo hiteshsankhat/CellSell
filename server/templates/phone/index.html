@@ -5,6 +5,7 @@
 {% block content %}
 <div class="album py-5 bg-light">
     <div class="container">
+        <h2>Select a {{type}} </h2>
         <div class="row">
             {% for i in data %}
                 <div class="col-md-4">
@@ -17,12 +18,13 @@
                                 dy=".3em">Thumbnail</text>
                         </svg>
                         <div class="card-body">
-                            <p class="card-text">Brand Name : {{i.modelNumberId.brandID}} <br>
-                            Model Number : {{i.modelNumberId}}<br>
-                            Varient : {{i.veriantName}}</p>
+                            <p class="card-text">{{nametext}} {{i.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
+                                    <a href="{% if type == 'Brand' %}/modelnumber/{{i.pk}}{% endif %}
+                                    {% if type == 'Model Number' %}/varient/{{i.pk}}{% endif %}
+                                    {% if type == 'Varient' %}/contactform{% endif %}"
+                                    type="button" class="btn btn-sm btn-outline-secondary">View</a>
                                 </div>
                             </div>
                         </div>

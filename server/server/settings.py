@@ -39,7 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
-    'phone'
+    'phone',
+    'widget_tweaks'
 ]
 
 MIDDLEWARE = [
@@ -127,6 +128,13 @@ STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'kvirat2944@gmail.com'
+EMAIL_HOST_PASSWORD = '9004652865'
+EMAIL_PORT = 587
 
 ## App settings
 APPSETTINGS_DATA = json.load(open(os.path.join(BASE_DIR, 'appsettings.json'), 'r'))

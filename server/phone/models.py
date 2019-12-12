@@ -8,15 +8,15 @@ class BrandName(models.Model):
 
 class ModelNumber(models.Model):
     brandID = models.ForeignKey(BrandName, on_delete=models.CASCADE)
-    modelName = models.CharField(max_length=500)
+    name = models.CharField(max_length=500)
     modelImage = models.ImageField(upload_to='media/', default=None, blank=True)
 
     def __str__(self):
-        return self.modelName
+        return self.name
 
 class Variant(models.Model):
     modelNumberId = models.ForeignKey(ModelNumber, on_delete=models.CASCADE)
-    veriantName = models.CharField(max_length=500)
+    name = models.CharField(max_length=500)
 
     def __str__(self):
-        return self.veriantName
+        return self.name

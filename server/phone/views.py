@@ -44,6 +44,7 @@ def getVarients(request, modelID):
     content['type'] = "Varient"
     if varientDB:
         nametext = varientDB[0].modelNumberId.brandID.name + " " + varientDB[0].modelNumberId.name
+        content['image'] = varientDB[0].modelNumberId.modelImage
     else:
         nametext = None
     content['nametext'] = nametext

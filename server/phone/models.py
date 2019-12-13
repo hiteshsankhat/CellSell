@@ -2,6 +2,7 @@ from django.db import models
 
 class BrandName(models.Model):
     name = models.CharField(max_length=500)
+    brandIcon = models.ImageField(upload_to='brand-icons/', default=None, blank=True)
 
     def __str__(self):
         return self.name
@@ -9,7 +10,7 @@ class BrandName(models.Model):
 class ModelNumber(models.Model):
     brandID = models.ForeignKey(BrandName, on_delete=models.CASCADE)
     name = models.CharField(max_length=500)
-    modelImage = models.ImageField(upload_to='media/', default=None, blank=True)
+    modelImage = models.ImageField(upload_to='model-image/', default=None, blank=True)
 
     def __str__(self):
         return self.name

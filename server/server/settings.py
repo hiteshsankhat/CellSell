@@ -137,6 +137,17 @@ EMAIL_HOST_USER = 'kvirat2944@gmail.com'
 EMAIL_HOST_PASSWORD = '9004652865'
 EMAIL_PORT = 587
 
+#way2sms credentails 
+WAY2SMS = {
+    "url" : "https://www.way2sms.com/api/v1/sendCampaign",
+    "api_key" : "0VXHJEEYMNLRPG271MU5LCADC4XWA3V8",
+    "secret_key" : "H45FXRPYBBU6S9GC",
+    "use_type" : "prod",
+    "sender_id" : "cell_sell"
+}
+
+SECRET_KEY
+
 ## App settings
 APPSETTINGS_DATA = json.load(open(os.path.join(BASE_DIR, 'appsettings.json'), 'r'))
 

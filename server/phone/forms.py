@@ -1,5 +1,6 @@
 from django import forms
 from phone_field import PhoneField
+from . import sending_message as sms
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=30)
@@ -29,6 +30,7 @@ class ContactForm(forms.Form):
         pinCode = cleaned_data.get('pinCode')
         phone = cleaned_data.get('phone')
 
+        sms.send_otp(phone, '9121')
 
         if not phone.isnumeric():
             raise forms.ValidationError("Please enter valid number")

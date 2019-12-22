@@ -1,0 +1,159 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{site_name}}
+{% endblock title %}
+
+
+{% block content %}
+<div class="main-content">
+    <form method="post">
+        {% csrf_token %}
+        <div class="container">
+            <div class="row">
+                <div class="col">
+                    <div class="page-header text-center">
+                        <h2>TITLE</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 text-center">
+                    <img src="https://quickmobile.co.in/upload/1508183932.jpg" alt="" class="img-responsive">
+                </div>
+                <div class="col-md-6">
+                    <div class="form-collection">
+                        <div class="function-condition-block" id="function_condition_blk">
+                            <div class="block-title">
+                                <h3>Funtion Condition</h3>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="issue_no_issue" id="no_issue"
+                                    value="no_issue" checked>
+                                <label class="form-check-label" for="no_issue">
+                                    No Issue
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="issue_no_issue" id="issue" value="2">
+                                <label class="form-check-label" for="issue">
+                                    Issue
+                                </label>
+                            </div>
+                            <div class="pager">
+                                <button id="previous_btn" class="btn btn-primary previous hide-block">Previous</button>
+                                <div class="pager-middle"></div>
+                                <button id="fun_cond_next_btn" class="btn btn-primary next">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="accessories-block hide-block" id="accessories_block">
+                            <div class="block-title">
+                                <h3>Accessories</h3>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="charger" name="charger" id="charger">
+                                <label class="form-check-label" for="charger">
+                                    Charger
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="earPhone" name="ear_phone" id="ear_phone">
+                                <label class="form-check-label" for="ear_phone">
+                                    Ear Phone
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="checkbox" value="box" name="box" id="box">
+                                <label class="form-check-label" for="box">
+                                    Box
+                                </label>
+                            </div>
+                            <div class="pager">
+                                <button id="accessories_previous_btn" class="btn btn-primary previous">Previous</button>
+                                <div class="pager-middle"></div>
+                                <button id="accessories_next_btn" class="btn btn-primary next">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="bill-condition-block hide-block" id="bill_condition_blk">
+                            <div class="block-title">
+                                <h3>Valid Bill</h3>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="valid_bill_status" id="bill_below"
+                                    value="billBelow" checked>
+                                <label class="form-check-label" for="bill_below">
+                                    Below 1 Year
+                                </label>
+                                <p><small><strong>Need Minimum 3 Months Brand Warranty*</strong></small></p>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="valid_bill_status" id="bill_above" value="billAbove">
+                                <label class="form-check-label" for="bill_above">
+                                    Above 1 Year / No Bill
+                                </label>
+                            </div>
+                            <div class="pager">
+                                <button id="bill_previous_btn" class="btn btn-primary previous">Previous</button>
+                                <div class="pager-middle"></div>
+                                <button id="bill_next_btn" class="btn btn-primary next">Next</button>
+                            </div>
+                        </div>
+
+                        <div class="phone-condition-block hide-block" id="phone_condition_blk">
+                            <div class="block-title">
+                                <h3>Overall Condition</h3>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone_overall_condition" id="phone_new"
+                                    value="new" checked>
+                                <label class="form-check-label" for="phone_new">
+                                    New: No usage signs
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone_overall_condition" id="phone_excellent" value="excellent">
+                                <label class="form-check-label" for="phone_excellent">
+                                    Excellent: Light usage signs
+                                </label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input" type="radio" name="phone_overall_condition" id="phone_fair" value="fair">
+                                <label class="form-check-label" for="phone_fair">
+                                    Fair: Heavy usage signs
+                                </label>
+                            </div>
+                            <div class="pager">
+                                <button id="phone_cond_previous_btn" class="btn btn-primary previous">Previous</button>
+                                <div class="pager-middle"></div>
+                                <button id="phone_cond_next_btn" class="btn btn-primary next">Next</button>
+                            </div>
+                        </div>
+                        
+                        <div class="final-price-block hide-block" id="final_block">
+                            <div class="text-and-price" >
+                                <p id="give_final_price">We will pay you : Rs. </p>
+                            </div>
+                            <button type="submit" class="btn btn-success">Sell Your Phone</button>
+                            <!-- <a href="/contactform/" class="btn btn-success">Sell Your Phone</a> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<div class="hidden-data hide-block">
+    <input type="text" id="hidden_issue_no_issue" value="{{phoneData.no_issue_price}}">
+    <input type="text" id="hidden_has_charger" value="{{phoneData.hasCharger}}">
+    <input type="text" id="hidden_ear_phone" value="{{phoneData.hasHeadPhone}}">
+    <input type="text" id="hidden_box" value="{{phoneData.hasBox}}">
+    <input type="text" id="hidden_bill_below" value="{{phoneData.billBelowThreeMonth}}">
+    <input type="text" id="hidden_bill_above" value="{{phoneData.billAboveThreeMonth}}">
+    <input type="text" id="hidden_phone_excellent" value="{{phoneData.isExcellent}}">
+    <input type="text" id="hidden_phone_fair" value="{{phoneData.isFair}}">
+    <input type="text" id="hidden_phone_new" value="{{phoneData.isNew}}">
+</div>
+{% endblock content %}

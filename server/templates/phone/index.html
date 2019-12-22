@@ -3,7 +3,7 @@
 {% block title %}{{site_name}}{% endblock title %}
 
 {% block content %}
-<div class="album py-5 bg-light">
+<div class="album py-5 bg-light min-height">
     <div class="container">
         <h2>Select a {{type}} </h2>
         <div class="row">
@@ -18,11 +18,11 @@
                                 dy=".3em">Thumbnail</text>
                         </svg> {% endcomment %}
                         {% if type == "Brand" %}
-                            <img src="{{i.brandIcon.url}}" 
+                            {% comment %} <img src="{{i.brandIcon.url}}" 
                             class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="225" alt="Logo">
+                            width="90%" height="225" alt="Logo"> {% endcomment %}
                         <div class="card-body">
-                            <p class="card-text">{{nametext}} {{i.name}}</p>
+                            <p class="card-text">{{i.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="/modelnumber/{{i.pk}}"
@@ -32,11 +32,11 @@
                         </div>
                         {% endif %}
                         {% if type == "Model Number" %}
-                        <img src="{{i.modelImage.url}}" 
+                        {% comment %} <img src="{{i.modelImage.url}}" 
                             class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="300" alt="Logo">
+                            width="90%" height="300" alt="Logo"> {% endcomment %}
                         <div class="card-body">
-                            <p class="card-text">{{nametext}} {{i.name}}</p>
+                            <p class="card-text">{{i.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
                                     <a href="/varient/{{i.pk}}"
@@ -46,14 +46,16 @@
                         </div>
                         {% endif %}
                         {% if type == "Varient" %}
-                        <img src="{{image.url}}" 
+                        {% comment %} <img src="{{image.url}}" 
                             class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="300" alt="Logo">
+                            width="90%" height="300" alt="Logo"> {% endcomment %}
                         <div class="card-body">
-                            <p class="card-text">{{nametext}} {{i.name}}</p>
+                            <p class="card-text">{{nametext}} <br>
+                                               <strong> RAM : </strong> {{i.ram}} <br>
+                                               <strong> Stroage : </strong> {{i.storage}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="/contactform"
+                                    <a href="/phone-conditon/{{i.pk}}"
                                     type="button" class="btn btn-sm btn-outline-secondary">View</a>
                                 </div>
                             </div>

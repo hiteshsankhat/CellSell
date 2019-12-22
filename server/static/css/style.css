@@ -2,3 +2,56 @@
 {
     padding: 5%;
 }
+
+.hide-block {
+    display: none;
+}
+
+.search-padding-right  {
+    padding-right: 10px;
+}
+
+.min-height  {
+    min-height: 92vh;
+}
+
+.main-content {
+    margin-bottom: 5%;
+}
+
+.form-collection {
+    padding-top: 10%;
+}
+
+.function-condition-block {
+    height: 100%;
+    width: 100%;
+}
+
+.accessories-block {
+    height: 100%;
+    width: 100%;
+}
+
+.pager {
+    margin-top: 40px;
+    display: flex;
+    max-width: 400px;
+}
+
+.previous { 
+    width: 90px;
+    height: 40px;
+    flex-grow: 1;
+}
+
+.pager-middle {
+    flex-grow: 8;
+}
+
+.next { 
+    width: 90px;
+    height: 40px;
+    flex-grow: 1;
+    margin-right: 2%;
+}

@@ -7,5 +7,7 @@ urlpatterns = [
     path('', views.getAllBrands),
     path('modelnumber/<int:brandID>', views.getModels),
     path('varient/<int:modelID>', views.getVarients),
-    path('contactform/', views.userContactForm)
+    path('phone-conditon/<int:varientID>', views.phoneConditon),
+    path('contactform/<int:varientID>', views.userContactForm, name="contact-form"),
+    path('autocomplete-search', views.autoComplete)
 ]

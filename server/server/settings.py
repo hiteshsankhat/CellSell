@@ -139,4 +139,3 @@ EMAIL_PORT = 587
 
 ## App settings
 APPSETTINGS_DATA = json.load(open(os.path.join(BASE_DIR, 'appsettings.json'), 'r'))
-

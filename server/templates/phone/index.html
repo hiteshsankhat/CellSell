@@ -2,6 +2,12 @@
 
 {% block title %}{{site_name}}{% endblock title %}
 
+{% if type == "Brand" or type == "Model Number" %}
+    {% block searchBox %}
+        {% include 'search.html' %}
+    {% endblock searchBox %}
+{% endif %}
+
 {% block content %}
 <div class="album py-5 bg-light min-height">
     <div class="container">

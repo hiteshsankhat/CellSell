@@ -20,6 +20,25 @@ function searchOpen() {
         }
     });
 }
+
+function searchOperations() {
+    var search = $('#txtSearch').val()
+    var data = {
+        search: search
+    };
+    $.ajax({
+        url: '/get-search-result',
+        data: data,
+        dataType: 'json',
+        success: function (data) {
+            var url = window.location.origin + "/varient/" + data.data[0]
+            // console.log($(location).attr("href"));
+            window.location.replace(url);
+        }
+    });
+}
+
+
 $("#fun_cond_next_btn").click(function (e) {
     var issueNoIssueValue = $("input[name='issue_no_issue']:checked").val()
     if (issueNoIssueValue != 2 && issueNoIssueValue) {
@@ -83,13 +102,13 @@ $("#phone_cond_next_btn").click(function (e) {
         if (status === "new") status = $("#hidden_phone_new").val()
         if (status === "fair") status = $("#hidden_phone_fair").val()
         if (status === "excellent") status = $("#hidden_phone_excellent").val()
- 
-        var result = parseFloat(issueNoIssueValue) + 
-                    parseFloat((charger ? charger : 0)) + 
-                    parseFloat((earPhone ? earPhone : 0)) + 
-                    parseFloat((box? box : 0)) + 
-                    parseFloat(billStatus) + 
-                    parseFloat(status);
+
+        var result = parseFloat(issueNoIssueValue) +
+            parseFloat((charger ? charger : 0)) +
+            parseFloat((earPhone ? earPhone : 0)) +
+            parseFloat((box ? box : 0)) +
+            parseFloat(billStatus) +
+            parseFloat(status);
         $("#give_final_price").append(result);
         $("#phone_condition_blk").addClass('hide-block')
         $("#final_block").removeClass('hide-block')

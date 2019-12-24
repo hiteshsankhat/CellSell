@@ -97,79 +97,95 @@ def autoComplete(request):
 
 def preparedMailData(data, form, phone):
     msg = '''
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<table class="tg">
+<table>
   <tr>
-    <th class="tg-0lax">Name</th>
-    <th class="tg-0lax">{name}</th>
+    <td>Name</td>
+    <td>{name}</td>
   </tr>
   <tr>
-    <td class="tg-0lax" colspan="2">Address</td>
+    <td>Phone Number</td>
+    <td>{phone}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">address line 1</td>
-    <td class="tg-0lax">{add1}</td>
+    <td colspan="2">Address</td>
   </tr>
   <tr>
-    <td class="tg-0lax">address line 2</td>
-    <td class="tg-0lax">{add2}</td>
+    <td>Address line 1</td>
+    <td>{add1}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">City</td>
-    <td class="tg-0lax">{city}</td>
+    <td>Address line 2</td>
+    <td>{add2}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">State</td>
-    <td class="tg-0lax">{state}</td>
+    <td>City</td>
+    <td>{city}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Pin code</td>
-    <td class="tg-0lax">{pinCode}</td>
+    <td>State</td>
+    <td>{state}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Phone</td>
-    <td class="tg-0lax">{phone}</td>
+    <td>Pin code</td>
+    <td>{pinCode}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Issue</td>
-    <td class="tg-0lax">{issue}</td>
+    <td colspan="2">Phone Condition</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Charger</td>
-    <td class="tg-0lax">{charger}</td>
+    <td>Issue</td>
+    <td>{issue}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Ear Phone</td>
-    <td class="tg-0lax">{earPhone}</td>
+    <td>Charger</td>
+    <td>{charger}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Box</td>
-    <td class="tg-0lax">{box}</td>
+    <td>Ear Phone</td>
+    <td>{earPhone}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Bill</td>
-    <td class="tg-0lax">{bill}</td>
+    <td>Box</td>
+    <td>{box}</td>
   </tr>
   <tr>
-    <td class="tg-0lax">Condition</td>
-    <td class="tg-0lax">{condition}</td>
+    <td>Bill</td>
+    <td>{bill}</td>
+  </tr>
+  <tr>
+    <td>Condition</td>
+    <td>{condition}</td>
   </tr>
 </table>
         '''.format(
-            name=form.cleaned_data.get("name"),
-            add1=form.cleaned_data.get("addressLine1"),
-            add2=form.cleaned_data.get("addressLine2"),
-            city=form.cleaned_data.get("city"),
-            state=form.cleaned_data.get("state"),
-            pinCode=form.cleaned_data.get("pinCode"),
-            phone=form.cleaned_data.get("phone"),
-            issue=data.get("issue_no_issue"),
-            charger=("Yes" if data.get("charger") else "NO"),
-            earPhone=("Yes" if data.get("ear_phone") else "NO"),
-            box=("Yes" if data.get("box") else "NO"),
-            bill=data.get("valid_bill_status"),
-            condition=data.get("phone_overall_condition")
-        )
+        name=form.cleaned_data.get("name"),
+        add1=form.cleaned_data.get("addressLine1"),
+        add2=form.cleaned_data.get("addressLine2"),
+        city=form.cleaned_data.get("city"),
+        state=form.cleaned_data.get("state"),
+        pinCode=form.cleaned_data.get("pinCode"),
+        phone=form.cleaned_data.get("phone"),
+        issue=data.get("issue_no_issue"),
+        charger=("Yes" if data.get("charger") else "NO"),
+        earPhone=("Yes" if data.get("ear_phone") else "NO"),
+        box=("Yes" if data.get("box") else "NO"),
+        bill=data.get("valid_bill_status"),
+        condition=data.get("phone_overall_condition")
+    )
 
     name = phone.modelNumberId.name + " " + phone.ram + " " + phone.storage
     return (name, msg)
+
+
+def getSearchResult(request):
+    data = {
+        'data': 'fail'
+    }
+    if request.is_ajax():
+        q = request.GET.get('search', '').capitalize()
+        search_qs = models.ModelNumber.objects.filter(name__iexact=q)[:5]
+        results = []
+        for r in search_qs:
+            results.append(r.pk)
+        data['data'] = results
+    return JsonResponse(data)

@@ -1,17 +1,19 @@
 {% extends 'base.html' %}
-
-{% block title %}
-{{site_name}}
-{% endblock title %}
-
+<!-- section -->
+{% block title %} {{site_name}} {% endblock title %}
+<!-- section -->
+{% block coverImage %} {% endblock coverImage %}
+<!-- section -->
 {% block content %}
-<div class="container">
-    <div class="row">
-        <div class="col">
+<div class="register">
+    <div class="container">
+        <h2>Give Your Details Here</h2>
+        <div class="login-form-grids">
             <form method="post" novalidate>
                 {% csrf_token %}
+                <!-- inculde  -->
                 {% include 'bs4_form.html' with form=form %}
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <input type="submit" value="Submit">
             </form>
         </div>
     </div>

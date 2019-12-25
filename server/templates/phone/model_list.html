@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+
+{% block title %}{{site_name}}{% endblock title %}
+
+{% block coverImage %} {% endblock coverImage %}
+
+
+{% block content %}
+<div class="newproducts-w3agile">
+    <div class="container">
+        <h3>Select Your {{type}}</h3>
+        <div class="agile_top_brands_grids">
+            {% for model in data %}
+            <div class="col-md-3 top_brand_left-1" style="margin: 10px 0px 10px 0px;">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <!-- <a href="#"><img class="brand" title=" " alt=" "
+                                                src="{{model.brandIcon.url}}"></a> -->
+                                        <a href="/varient/{{model.pk}}"><img class="model-image" title=" " alt=" "
+                                                src="https://quickmobile.co.in/upload/1545061043.jpg"></a>
+                                        <p>{{model.name}}</p>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <a href="/varient/{{model.pk}}" class="btn button btn-primary"> View</a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}

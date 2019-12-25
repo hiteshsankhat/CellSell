@@ -4,6 +4,8 @@ from phone_field import PhoneField
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=30)
     email = forms.EmailField(max_length=254)
+    phone = forms.CharField(max_length=10)
+
     addressLine1 = forms.CharField(
         max_length=300,
         label='Address Line 1')
@@ -16,7 +18,6 @@ class ContactForm(forms.Form):
     state = forms.CharField(max_length=150)
     pinCode = forms.CharField(max_length=10)    
     # phone = PhoneField(blank=True, help_text='Contact phone number')
-    phone = forms.CharField(max_length=10)
 
     def clean(self):
         cleaned_data = super(ContactForm, self).clean()

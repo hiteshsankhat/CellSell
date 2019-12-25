@@ -20,15 +20,12 @@ def index(request):
     return render(request, 'phone/index.html', content)
 
 
-def getModels(request, brandID):
-    try:
-        modelNumberDB = models.ModelNumber.objects.filter(brandID_id=brandID)
-        content['data'] = modelNumberDB
-        content['type'] = "Model Number"
-    except modelNumberDB.DoesNotExist:
-        raise Http404("not found")
-    return render(request, 'phone/index.html', content)
+def notFound(request):
+    return render(request, 'phone/404_page.html', content)
 
+
+def thankYou(request):
+    return render(request, 'phone/thank_you.html', content)
 
 def getAllBrands(request):
     # add_data.insert();
@@ -36,7 +33,17 @@ def getAllBrands(request):
     content['data'] = brandDB
     content['type'] = "Brand"
     content['nametext'] = nametext
-    return render(request, 'phone/index.html', content)
+    return render(request, 'phone/brand_list.html', content)
+
+
+def getModels(request, brandID):
+    try:
+        modelNumberDB = models.ModelNumber.objects.filter(brandID_id=brandID)
+        content['data'] = modelNumberDB
+        content['type'] = "Model Number"
+    except modelNumberDB.DoesNotExist:
+        raise Http404("not found")
+    return render(request, 'phone/model_list.html', content)
 
 
 def getVarients(request, modelID):
@@ -50,7 +57,7 @@ def getVarients(request, modelID):
     else:
         nametext = None
     content['nametext'] = nametext
-    return render(request, 'phone/index.html', content)
+    return render(request, 'phone/varient_list.html', content)
 
 
 def phoneConditon(request, varientID):
@@ -74,7 +81,7 @@ def userContactForm(request, varientID):
                                "kvirat2944@gmail.com"])
             msg.content_subtype = 'html'
             msg.send()
-            pass
+            return redirect('thank-you-page')
     else:
         form = ContactForm()
     content['form'] = form

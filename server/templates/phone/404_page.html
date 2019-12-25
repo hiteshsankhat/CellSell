@@ -1,0 +1,22 @@
+{% extends 'base.html' %} {% load static from staticfiles %} {% block title %}{{site_name}}{% endblock title %} {% block customCss %}
+<link href="{% static 'css/404_style.css' %}" rel="stylesheet" type="text/css" media="all" /> {% endblock customCss %} {% block coverImage %} {% endblock coverImage %} {% block content %}
+<div class="container">
+    <div class="container-404">
+        <div class="face">
+            <div class="band">
+                <div class="red"></div>
+                <div class="white"></div>
+                <div class="blue"></div>
+            </div>
+            <div class="eyes"></div>
+            <div class="dimples"></div>
+            <div class="mouth"></div>
+        </div>
+        <div class="text-center">
+            <h1>Oops! Something went wrong!</h1>
+            <h3>Device not found!</h3>
+            <a href="{% url 'home' %}" class="btn">Return to Home</a>
+        </div>
+    </div>
+</div>
+{% endblock content%}

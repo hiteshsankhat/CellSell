@@ -10,5 +10,7 @@ urlpatterns = [
     path('phone-conditon/<int:varientID>', views.phoneConditon),
     path('contactform/<int:varientID>', views.userContactForm, name="contact-form"),
     path('autocomplete-search', views.autoComplete),
-    path('get-search-result', views.getSearchResult)
+    path('get-search-result', views.getSearchResult),
+    path('not-found-page', views.notFound),
+    path('thank-you-page', views.thankYou, name="thank-you-page"),
 ]

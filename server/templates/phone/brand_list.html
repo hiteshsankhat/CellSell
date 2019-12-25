@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+
+{% load static from staticfiles %}
+
+
+{% block title %}{{site_name}}{% endblock title %}
+{% block coverImage %} {% endblock coverImage %}
+
+
+
+{% block content %}
+<div class="newproducts-w3agile">
+    <div class="container">
+        <h3>Select Your {{type}}</h3>
+        <div class="agile_top_brands_grids">
+            {% for brand in data %}
+            <div class="col-md-3 top_brand_left-1" style="margin: 10px 0px 10px 0px;">
+                <div class="hover14 column">
+                    <div class="agile_top_brand_left_grid">
+                        <div class="agile_top_brand_left_grid1">
+                            <figure>
+                                <div class="snipcart-item block">
+                                    <div class="snipcart-thumb">
+                                        <a href="/modelnumber/{{brand.pk}}"><img class = "brand" title=" " alt=" " src="{{brand.brandIcon.url}}"></a>
+                                        <p>{{brand.name}}</p>
+                                    </div>
+                                    <div class="snipcart-details top_brand_home_details">
+                                        <!-- <input type="button" name="submit" value="View" class="button"> -->
+                                        <a href="/modelnumber/{{brand.pk}}" class="btn button btn-primary"> View</a>
+                                    </div>
+                                </div>
+                            </figure>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+            <div class="clearfix"> </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- <div class="album py-5 bg-light min-height">
+    <div class="container">
+        <h2>Select a {{type}} </h2>
+        <div class="row">
+            {% for i in data %}
+            <div class="col-md-3 image">
+                <div class="">
+                    <div class="card mb-3 shadow-sm">
+                        {% if type == "Brand" %}
+                        <img src="{{i.brandIcon.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
+                        <div class="card-body">
+                            <p class="card-text">{{i.name}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="/modelnumber/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if type == "Model Number" %}
+                        <img src="{{i.modelImage.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
+                        <div class="card-body">
+                            <p class="card-text">{{i.name}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="/varient/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                        {% if type == "Varient" %}
+                        <img src="{{image.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
+                        <div class="card-body">
+                            <p class="card-text">{{nametext}} <br>
+                                <strong> RAM : </strong> {{i.ram}} <br>
+                                <strong> Stroage : </strong> {{i.storage}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="/phone-conditon/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
+                                </div>
+                            </div>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div> -->
+{% endblock content %}

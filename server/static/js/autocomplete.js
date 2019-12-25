@@ -31,9 +31,10 @@ function searchOperations() {
         data: data,
         dataType: 'json',
         success: function (data) {
-            var url = window.location.origin + "/varient/" + data.data[0]
-            // console.log($(location).attr("href"));
-            window.location.replace(url);
+            if (data.data.length == 1) {
+                var url = window.location.origin + "/varient/" + data.data[0]
+                window.location.replace(url);
+            }
         }
     });
 }

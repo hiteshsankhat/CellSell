@@ -14,61 +14,50 @@
         <h2>Select a {{type}} </h2>
         <div class="row">
             {% for i in data %}
-                <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
-                        {% comment %} <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
-                            xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false"
-                            role="img" aria-label="Placeholder: Thumbnail">
-                            <title>Placeholder</title>
-                            <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
-                                dy=".3em">Thumbnail</text>
-                        </svg> {% endcomment %}
+            <div class="col-md-3 image">
+                <div class="">
+                    <div class="card mb-3 shadow-sm">
                         {% if type == "Brand" %}
-                            {% comment %} <img src="{{i.brandIcon.url}}" 
-                            class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="225" alt="Logo"> {% endcomment %}
+                        <img src="{{i.brandIcon.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
                         <div class="card-body">
                             <p class="card-text">{{i.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="/modelnumber/{{i.pk}}"
-                                    type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="/modelnumber/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
                                 </div>
                             </div>
                         </div>
                         {% endif %}
                         {% if type == "Model Number" %}
-                        {% comment %} <img src="{{i.modelImage.url}}" 
-                            class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="300" alt="Logo"> {% endcomment %}
+                        <img src="{{i.modelImage.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
                         <div class="card-body">
                             <p class="card-text">{{i.name}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="/varient/{{i.pk}}"
-                                    type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="/varient/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
                                 </div>
                             </div>
                         </div>
                         {% endif %}
                         {% if type == "Varient" %}
-                        {% comment %} <img src="{{image.url}}" 
-                            class="bd-placeholder-img card-img-top img-padding" 
-                            width="90%" height="300" alt="Logo"> {% endcomment %}
+                        <img src="{{image.url}}" class="bd-placeholder-img card-img-top img-padding" alt="Logo">
                         <div class="card-body">
                             <p class="card-text">{{nametext}} <br>
-                                               <strong> RAM : </strong> {{i.ram}} <br>
-                                               <strong> Stroage : </strong> {{i.storage}}</p>
+                                <strong> RAM : </strong> {{i.ram}} <br>
+                                <strong> Stroage : </strong> {{i.storage}}</p>
                             <div class="d-flex justify-content-between align-items-center">
                                 <div class="btn-group">
-                                    <a href="/phone-conditon/{{i.pk}}"
-                                    type="button" class="btn btn-sm btn-outline-secondary">View</a>
+                                    <a href="/phone-conditon/{{i.pk}}" type="button"
+                                        class="btn btn-sm btn-outline-secondary">View</a>
                                 </div>
                             </div>
                         </div>
                         {% endif %}
                     </div>
                 </div>
+            </div>
             {% endfor %}
         </div>
     </div>

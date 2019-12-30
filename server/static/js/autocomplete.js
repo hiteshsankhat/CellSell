@@ -50,7 +50,9 @@ $("#fun_cond_next_btn").click(function(e) {
         $("#accessories_block").removeClass('hide-block')
     }
     if (issueNoIssueValue == 2) {
-
+        $("#give_final_price").append("0.00");
+        $("#function_condition_blk").addClass('hide-block')
+        $("#final_block").removeClass('hide-block')
     }
     e.preventDefault()
 });

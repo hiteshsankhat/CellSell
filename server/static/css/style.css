@@ -715,6 +715,9 @@ a.w3_agile_vimeo:hover {
     ul.phone_email li {
         font-size: 13px;
     }
+    .footer {
+        padding: 3em 0 2em;
+    }
     .w3ls_logo_products_left1 {
         margin-top: 0;
         width: 38%;

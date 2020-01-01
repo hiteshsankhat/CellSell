@@ -48,7 +48,6 @@
                 <h1><a href="{% url 'home' %}">{{site_name}}</a></h1>
             </div>
             <div class="w3l_search">
-                <!-- <form action="#" method="post"> -->
                 <input type="search" placeholder="Search for a Phone..." required
                 onkeyup="searchOpen()" list="phoneList" name="search" id="txtSearch">
                 
@@ -58,7 +57,6 @@
                     <i class="fa fa-search" aria-hidden="true"> </i>
                 </button>
                 <div class="clearfix"></div>
-                <!-- </form> -->
             </div>
 
             <div class="clearfix"> </div>
@@ -80,9 +78,6 @@
     <!-- /.carousel -->
     {% endblock coverImage %}
 
-
-    <!-- {% block searchBox %}
-    {% endblock searchBox %} -->
     {% block content %}
     {% endblock content%}
 
@@ -116,7 +111,7 @@
     </script>
     <!-- //here ends scrolling icon -->
 
-    <script src="{% static 'js/autocomplete.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
 
 
 </body>

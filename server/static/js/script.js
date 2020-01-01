@@ -7,7 +7,7 @@ function searchOpen() {
         url: '/autocomplete-search',
         data: data,
         dataType: 'json',
-        success: function(data) {
+        success: function (data) {
             const dataList = document.getElementById('phoneList');
             while (dataList.firstChild) {
                 dataList.removeChild(dataList.firstChild);
@@ -30,7 +30,7 @@ function searchOperations() {
         url: '/get-search-result',
         data: data,
         dataType: 'json',
-        success: function(data) {
+        success: function (data) {
             var url = ""
             if (data.data.length == 1) {
                 url = window.location.origin + "/varient/" + data.data[0]
@@ -43,7 +43,7 @@ function searchOperations() {
 }
 
 
-$("#fun_cond_next_btn").click(function(e) {
+$("#fun_cond_next_btn").click(function (e) {
     var issueNoIssueValue = $("input[name='issue_no_issue']:checked").val()
     if (issueNoIssueValue != 2 && issueNoIssueValue) {
         $("#function_condition_blk").addClass('hide-block')
@@ -57,24 +57,22 @@ $("#fun_cond_next_btn").click(function(e) {
     e.preventDefault()
 });
 
-$("#accessories_next_btn").click(function(e) {
+$("#accessories_next_btn").click(function (e) {
     var charger = $("input[name='charger']:checked").val()
     var earPhone = $("input[name='ear_phone']:checked").val()
     var box = $("input[name='box']:checked").val()
-    if (charger || earPhone || box) {
-        $("#accessories_block").addClass('hide-block')
-        $("#bill_condition_blk").removeClass('hide-block')
-    }
+    $("#accessories_block").addClass('hide-block')
+    $("#bill_condition_blk").removeClass('hide-block')
     e.preventDefault()
 });
 
-$("#accessories_previous_btn").click(function(e) {
+$("#accessories_previous_btn").click(function (e) {
     $("#accessories_block").addClass('hide-block')
     $("#function_condition_blk").removeClass('hide-block')
     e.preventDefault()
 });
 
-$("#bill_next_btn").click(function(e) {
+$("#bill_next_btn").click(function (e) {
     var billStatus = $("input[name='valid_bill_status']:checked").val()
     if (billStatus) {
         $("#bill_condition_blk").addClass('hide-block')
@@ -84,13 +82,13 @@ $("#bill_next_btn").click(function(e) {
 });
 
 
-$("#bill_previous_btn").click(function(e) {
+$("#bill_previous_btn").click(function (e) {
     $("#bill_condition_blk").addClass('hide-block')
     $("#accessories_block").removeClass('hide-block')
     e.preventDefault()
 });
 
-$("#phone_cond_next_btn").click(function(e) {
+$("#phone_cond_next_btn").click(function (e) {
     var status = $("input[name='phone_overall_condition']:checked").val()
     if (status) {
         var issueNoIssueValue = $("input[name='issue_no_issue']:checked").val()
@@ -123,7 +121,7 @@ $("#phone_cond_next_btn").click(function(e) {
 });
 
 
-$("#phone_cond_previous_btn").click(function(e) {
+$("#phone_cond_previous_btn").click(function (e) {
     $("#phone_condition_blk").addClass('hide-block')
     $("#bill_condition_blk").removeClass('hide-block')
     e.preventDefault()

@@ -1,12 +1,13 @@
 from django.http import HttpResponse, Http404, JsonResponse
 from django.shortcuts import get_object_or_404, render, redirect
-
+import os
 from . import models
 from server import settings
 from .forms import ContactForm
 from django.core.mail import send_mail, EmailMessage
 import json
-from . import add_data
+from . import add_data, read_excel
+from django.core.files.storage import FileSystemStorage
 
 
 content = settings.APPSETTINGS_DATA
@@ -26,6 +27,7 @@ def notFound(request):
 
 def thankYou(request):
     return render(request, 'phone/thank_you.html', content)
+
 
 def getAllBrands(request):
     # add_data.insert();
@@ -196,3 +198,16 @@ def getSearchResult(request):
             results.append(r.pk)
         data['data'] = results
     return JsonResponse(data)
+
+
+def importExcel(request):
+    print(request.FILES)
+    if request.method == 'POST' and request.FILES['excelFile']:
+        file = request.FILES['excelFile']
+        fs = FileSystemStorage()
+        filename = fs.save("data.xlsx", file)
+        path = os.path.join(settings.MEDIA_ROOT, filename)
+        read_excel.insertALLData(path)
+        fs.delete(filename)
+        return JsonResponse({'success': 'true'})
+    return JsonResponse({'success': 'false'})

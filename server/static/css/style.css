@@ -1213,3 +1213,10 @@ a.w3_agile_vimeo:hover {
 #give_frist_price {
     margin-bottom: 10px;
 }
+
+.loader {
+    position: absolute;
+    top: 40%;
+    left: 45%;
+    z-index: 2;
+}

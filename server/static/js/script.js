@@ -142,6 +142,7 @@ function importExcel(event) {
 
 $("#upload").on("change", function () {
     document.getElementById('formSubmit').click();
+    $("#loader").removeClass('hide-block');
 });
 
 
@@ -154,7 +155,7 @@ $('#id_ajax_upload_form').submit(function(e){
         type: 'POST',
         data: formData,
         success: function (response) {
-            console.log('done');
+            $("#loader").addClass('hide-block');
             $('#upload').val('');
             location.reload(true);
         },

@@ -9,7 +9,7 @@
 
 {% block welcome-msg %}
 {{block.super}}
-
+<link rel="stylesheet" href="{% static 'css/style.css' %}">
 <script src="{% static 'js/jquery-1.11.1.min.js' %}"></script>
 <a href="#" onClick="importExcel(event)" class="btn btn-high btn-success">
     Import
@@ -21,4 +21,10 @@
 </form>
 <script src="{% static 'js/script.js' %}"></script>
 
+<div id="loader" class="loader hide-block">
+    <img src="{% static 'images/loader.gif' %}" alt="" srcset="">
+</div>
+
+{% endblock %}
+{% block content%}
 {% endblock %}

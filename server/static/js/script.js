@@ -42,6 +42,11 @@ function searchOperations() {
     });
 }
 
+$("#fun_cond_continue_btn").click(function (e) {
+    $("#first_block").addClass('hide-block');
+    $("#function_condition_blk").removeClass('hide-block');
+    e.preventDefault();
+});
 
 $("#fun_cond_next_btn").click(function (e) {
     var issueNoIssueValue = $("input[name='issue_no_issue']:checked").val();
@@ -56,6 +61,7 @@ $("#fun_cond_next_btn").click(function (e) {
     }
     e.preventDefault();
 });
+
 
 $("#accessories_next_btn").click(function (e) {
     var charger = $("input[name='charger']:checked").val();

@@ -69,6 +69,7 @@ def phoneConditon(request, varientID):
     if request.method == "GET":
         selected_phone = models.Variant.objects.get(pk=varientID)
         content['phoneData'] = selected_phone
+        content['image'] = selected_phone.modelNumberId.modelImage
     return render(request, 'phone/phone_condition.html', content)
 
 
@@ -201,7 +202,6 @@ def getSearchResult(request):
 
 
 def importExcel(request):
-    print(request.FILES)
     if request.method == 'POST' and request.FILES['excelFile']:
         file = request.FILES['excelFile']
         fs = FileSystemStorage()

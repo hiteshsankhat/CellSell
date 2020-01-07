@@ -625,7 +625,7 @@ a.w3_agile_vimeo:hover {
 }
 
 .agileinfo_single_left {
-    padding: 2em;
+    padding: 1em 2em;
     box-shadow: 0px 0px 5px #b2afaf;
 }
 
@@ -652,7 +652,7 @@ a.w3_agile_vimeo:hover {
 /*-- products --*/
 
 .products {
-    padding: 5em 0;
+    padding: 3em 0;
     margin: 0 1em 0 1em;
 }
 /*-- //products --*/
@@ -1139,6 +1139,7 @@ a.w3_agile_vimeo:hover {
 .function-condition-block {
     height: 100%;
     width: 100%;
+    margin-top: 3em;
 }
 
 .accessories-block {
@@ -1179,4 +1180,36 @@ a.w3_agile_vimeo:hover {
 
 .cover-screen {
     min-height: 77.5vh;
+}
+
+.auto-margin {
+    margin: auto;
+}
+
+.img-responsive-custom {
+    display: block;
+    max-width: 100%;
+}
+
+.add-padding-h2 {
+    padding-left: 2em;
+    margin-bottom: 10px;
+}
+
+.continue-btn {
+    width: 80%;
+    font-size: larger;
+}
+
+.text-left {
+    text-align: left;
+}
+
+.first-price-block {
+    margin-top: 3em;
+    margin-left: 2em;
+}
+
+#give_frist_price {
+    margin-bottom: 10px;
 }

@@ -3,6 +3,8 @@ from django.db import connection
 
 from . import models
 
+def isNone(values):
+    return values if values else 0
 
 def sqlDeleteAllFromTable(tableName):
     with connection.cursor() as coursor:
@@ -43,7 +45,9 @@ def sqlInsertIntoVarient(data):
             VALUES(
                 '{0}','{1}','{2}','{3}','{4}','{5}','{6}','{7}','{8}','{9}','{10}','{11}'
             )
-            '''.format(data[2], data[3], row[0][0], data[4], data[7], data[6], data[10], data[8], data[9], data[12], data[11], data[13])
+            '''.format(data[2], data[3], row[0][0], isNone(data[4]), isNone(data[7]), isNone(data[6]), 
+                isNone(data[10]), isNone(data[8]), isNone(data[9]), isNone(data[12]), 
+                isNone(data[11]), isNone(data[13]))
             cursor.execute(sql)
         else:
             print(data[1])

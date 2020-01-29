@@ -6,7 +6,7 @@ from server import settings
 from .forms import ContactForm
 from django.core.mail import send_mail, EmailMessage
 import json
-from . import add_data, read_excel
+from . import add_data, read_excel, write_excel
 from django.core.files.storage import FileSystemStorage
 
 
@@ -211,3 +211,9 @@ def importExcel(request):
         fs.delete(filename)
         return JsonResponse({'success': 'true'})
     return JsonResponse({'success': 'false'})
+
+
+def downloadExcel(request):
+    response = HttpResponse(content_type='application/ms-excel')
+    response['Content-Disposition'] = 'attachment; filename="PhoneData.xls'
+    return write_excel.export(response)

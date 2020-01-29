@@ -14,5 +14,5 @@ urlpatterns = [
     path('not-found-page', views.notFound),
     path('thank-you-page', views.thankYou, name="thank-you-page"),
     path('import-data-from-excel', views.importExcel, name="file-upload-page"),
-    
+    path('download-data', views.downloadExcel, name="download-excel")
 ]

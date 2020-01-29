@@ -14,6 +14,9 @@
 <a href="#" onClick="importExcel(event)" class="btn btn-high btn-success">
     Import
 </a> /
+<a href="/download-data" class="btn btn-high btn-success">
+    Export
+</a> /
 <form id="id_ajax_upload_form" method="post" enctype="multipart/form-data" hidden>
     {% csrf_token %}
     <input id="upload" type="file" name="excelFile" hidden>

@@ -6,7 +6,7 @@ from server import settings
 from .forms import ContactForm
 from django.core.mail import send_mail, EmailMessage
 import json
-from . import add_data, read_excel, write_excel
+from . import add_data, read_excel, write_excel, sendingMail
 from django.core.files.storage import FileSystemStorage
 
 
@@ -79,11 +79,12 @@ def userContactForm(request, varientID):
         if form.is_valid():
             selected_phone = models.Variant.objects.get(pk=varientID)
             data = request.session['data']
-            subject, msg = preparedMailData(data, form, selected_phone)
-            msg = EmailMessage(subject=subject, body=msg, from_email="kvirat2944@gmail.com", to=[
-                               "kvirat2944@gmail.com"])
-            msg.content_subtype = 'html'
-            msg.send()
+            sendingMail.sendMail(data, form, selected_phone);
+            # subject, msg = preparedMailData(data, form, selected_phone)
+            # msg = EmailMessage(subject=subject, body=msg, from_email="kvirat2944@gmail.com", to=[
+            #                    "kvirat2944@gmail.com"])
+            # msg.content_subtype = 'html'
+            # msg.send()
             return redirect('thank-you-page')
     else:
         form = ContactForm()
@@ -103,88 +104,6 @@ def autoComplete(request):
             results.append(r.name)
         data['data'] = results
     return JsonResponse(data)
-
-
-def preparedMailData(data, form, phone):
-    msg = '''
-<table>
-  <tr>
-    <td>Name</td>
-    <td>{name}</td>
-  </tr>
-  <tr>
-    <td>Phone Number</td>
-    <td>{phone}</td>
-  </tr>
-  <tr>
-    <td colspan="2">Address</td>
-  </tr>
-  <tr>
-    <td>Address line 1</td>
-    <td>{add1}</td>
-  </tr>
-  <tr>
-    <td>Address line 2</td>
-    <td>{add2}</td>
-  </tr>
-  <tr>
-    <td>City</td>
-    <td>{city}</td>
-  </tr>
-  <tr>
-    <td>State</td>
-    <td>{state}</td>
-  </tr>
-  <tr>
-    <td>Pin code</td>
-    <td>{pinCode}</td>
-  </tr>
-  <tr>
-    <td colspan="2">Phone Condition</td>
-  </tr>
-  <tr>
-    <td>Issue</td>
-    <td>{issue}</td>
-  </tr>
-  <tr>
-    <td>Charger</td>
-    <td>{charger}</td>
-  </tr>
-  <tr>
-    <td>Ear Phone</td>
-    <td>{earPhone}</td>
-  </tr>
-  <tr>
-    <td>Box</td>
-    <td>{box}</td>
-  </tr>
-  <tr>
-    <td>Bill</td>
-    <td>{bill}</td>
-  </tr>
-  <tr>
-    <td>Condition</td>
-    <td>{condition}</td>
-  </tr>
-</table>
-        '''.format(
-        name=form.cleaned_data.get("name"),
-        add1=form.cleaned_data.get("addressLine1"),
-        add2=form.cleaned_data.get("addressLine2"),
-        city=form.cleaned_data.get("city"),
-        state=form.cleaned_data.get("state"),
-        pinCode=form.cleaned_data.get("pinCode"),
-        phone=form.cleaned_data.get("phone"),
-        issue=data.get("issue_no_issue"),
-        charger=("Yes" if data.get("charger") else "NO"),
-        earPhone=("Yes" if data.get("ear_phone") else "NO"),
-        box=("Yes" if data.get("box") else "NO"),
-        bill=data.get("valid_bill_status"),
-        condition=data.get("phone_overall_condition")
-    )
-
-    name = phone.modelNumberId.name + " " + phone.ram + " " + phone.storage
-    return (name, msg)
 
 
 def getSearchResult(request):

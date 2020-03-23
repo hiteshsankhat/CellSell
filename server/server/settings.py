@@ -38,7 +38,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',
     'phone',
     'widget_tweaks',
     'phone_field'
@@ -78,12 +77,26 @@ WSGI_APPLICATION = 'server.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.mysql',
+        'NAME': 'CashPayUS',
+        'USER': 'CashPayUSUser',
+        'PASSWORD': "CashPayUSUser",
+        'HOST': "166.62.28.6",
+        'PORT': "3306",
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'"
+            }
+        }
     }
-}
 
 
 # Password validation
@@ -123,19 +136,21 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
-
-
 MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = '/home/y9nk6zv0dba3/public_html/static'
+MEDIA_ROOT = '/home/y9nk6zv0dba3/public_html/media'
 
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_USE_TLS = True
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kvirat2944@gmail.com'
-EMAIL_HOST_PASSWORD = '9004652865'
-EMAIL_PORT = 587
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_USE_TLS = True
+EMAIL_HOST = 'smtp.mail.yahoo.com'
+EMAIL_HOST_USER = 'hiteshsankhat2944@gmail.com'
+EMAIL_HOST_PASSWORD = 'zazofstnqbtsitqc'
+EMAIL_PORT = 465
+EMAIL_ADDRESS_RECEVIER = 'kvirat2944@gmail.com'
 
-## App settings
-APPSETTINGS_DATA = json.load(open(os.path.join(BASE_DIR, 'appsettings.json'), 'r'))
+# App settings
+APPSETTINGS_DATA = json.load(
+    open(os.path.join(BASE_DIR, 'appsettings.json'), 'r'))
